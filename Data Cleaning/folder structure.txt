@@ -1,0 +1,16 @@
+Data Cleaning/
+├── notebooks/
+│   ├── 01_initial_data_profiling.ipynb
+│   ├── 02_missing_value_analysis.ipynb
+│   ├── 03_data_cleaning_pipeline.ipynb
+│   └── 04_data_quality_validation.ipynb
+├── scripts/
+│   ├── clean_disaster_data.py (main cleaning script)
+│   ├── data_validation.py (validation functions)
+│   └── utils.py (helper functions)
+├── power_query/
+│   ├── power_bi_transformations.txt (M code from Power Query)
+│   └── cleaning_steps_documentation.md
+└── logs/
+    ├── data_cleaning_log.txt
+    └── quality_metrics.csv

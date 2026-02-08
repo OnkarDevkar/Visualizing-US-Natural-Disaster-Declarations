@@ -27,6 +27,62 @@ Coverage: United States
 
 📊 The dataset enables long-term trend analysis and regional comparison of disaster occurrences.
 
+## 📁 Project Structure
+```
+Visualizing-US-Disaster-Declarations/
+│
+├── Data/
+│   ├── raw/                          # Original FEMA datasets
+│   ├── processed/                    # Cleaned and transformed data
+│   └── external/                     # API imports and supplementary data
+│
+├── Data Cleaning/
+│   ├── notebooks/                    # Jupyter notebooks for cleaning
+│   ├── scripts/                      # Python cleaning pipeline
+│   ├── power_query/                  # Power BI M transformations
+│   └── logs/                         # Data quality logs
+│
+├── Documentation/
+│   ├── Week1_Foundation.md
+│   ├── Week2_Data_Quality.md
+│   ├── Week3_EDA.md
+│   ├── Week4_APIs_Git.md
+│   ├── Week5_Visualization.md
+│   ├── Week6_DAX.md
+│   └── Final_Report.pdf
+│
+├── Power BI/
+│   ├── dashboards/                   # .pbix files
+│   ├── templates/                    # Reusable templates
+│   ├── dax_library/                  # DAX measures library
+│   └── documentation/                # User guides
+│
+├── Visuals/
+│   ├── dashboards/                   # Dashboard screenshots
+│   ├── individual_charts/            # Chart exports
+│   ├── kpi_cards/                    # KPI visuals
+│   └── presentations/                # Presentation-ready images
+│
+├── scripts/
+│   ├── data_import.py                # API data fetching
+│   ├── data_cleaning.py              # Cleaning pipeline
+│   ├── eda_analysis.py               # Exploratory analysis
+│   └── utils.py                      # Helper functions
+│
+├── notebooks/
+│   ├── 01_Data_Profiling.ipynb
+│   ├── 02_EDA.ipynb
+│   └── 03_Statistical_Analysis.ipynb
+│
+├── requirements.txt                  # Python dependencies
+├── .gitignore
+├── LICENSE
+└── README.md                         # This file
+```
+
+---
+
+
 📊 KPI Usages
 
 The following key performance indicators (KPIs) are used in the analysis:

@@ -1,0 +1,9 @@
+Project Outcomes
+
+This internship provides hands-on experience with real-world data science workflows, from data acquisition through analysis to presentation. Participants develop both technical capabilities and professional practices essential for data science careers, including data quality management, analytical thinking, automation skills, collaborative development, and effective communication of insights.
+
+---
+
+Document Prepared By: Onkar Devkar 
+Mentor: Akshay Sir
+Program: Infosys Internship - Data Visualization 

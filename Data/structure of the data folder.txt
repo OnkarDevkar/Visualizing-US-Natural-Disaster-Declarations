@@ -1,0 +1,12 @@
+Data/
+├── raw/
+│   ├── fema_disaster_declarations.csv (original dataset from FEMA)
+│   ├── state_population_data.csv (supporting demographic data)
+│   └── disaster_metadata.xlsx (data dictionary/codebook)
+├── processed/
+│   ├── cleaned_disaster_data.csv (after data cleaning pipeline)
+│   ├── aggregated_yearly_disasters.csv (time-series aggregations)
+│   └── state_wise_summary.csv (geographic summaries)
+└── external/
+    ├── api_imports/ (data from FEMA OpenFEMA API)
+    └── supplementary_data/ (NOAA climate data, etc.)
