@@ -1,0 +1,31 @@
+# Core Data Science & Analysis
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Visualization & Plotting
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.14.0
+
+# Interactive Mapping & Geospatial
+folium>=0.14.0
+geopandas>=0.13.0
+shapely>=2.0.0
+fiona>=1.9.0
+pyproj>=3.5.0
+
+# Jupyter Environment
+jupyter>=1.0.0
+jupyterlab>=4.0.0
+notebook>=7.0.0
+
+# API & Data Handling
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Excel & File I/O
+openpyxl>=3.1.0        # For reading/writing .xlsx files
+xlrd>=2.0.1            # For reading legacy .xls files
+xlsxwriter>=3.1.0      # For writing advanced Excel features
+pyarrow>=12.0.0        # Optimized engine for reading large datasets (Parquet/CSV)

@@ -1,0 +1,108 @@
+FEMA Disaster Declarations Dataset Fields
+
+.femaDeclarationString (string): FEMA declaration identifier, concatenation of type, number, and state (e.g. DR-4393-NC)
+. disasterNumber (integer): FEMA’s sequential disaster number (e.g. 4393)
+.state (string): State, district or territory name (e.g. North Carolina)
+.declarationType (string): Declaration code – DR (Major Disaster), EM (Emergency), or FM (Fire Management)
+.declarationDate (date): Date of the declaration (e.g. 2024-08-27)
+.fyDeclared (integer): Fiscal year of declaration (e.g. 2024)
+.incidentType (string): Primary incident type (e.g. Hurricane, Flood)
+.declarationTitle (string): Official disaster title (e.g. Hurricane Floyd)
+.ihProgramDeclared (boolean): Individual/Households program declared (Yes/No)
+.iaProgramDeclared (boolean): Individual Assistance program declared (Yes/No)
+.paProgramDeclared (boolean): Public Assistance program declared (Yes/No)
+.hmProgramDeclared (boolean): Hazard Mitigation program declared (Yes/No)
+.incidentBeginDate (date): Incident start date (e.g. 2024-08-15)
+.incidentEndDate (date): Incident end date (e.g. 2024-08-20)
+.disasterCloseoutDate (date): Final financial closeout date (e.g. 2025-01-30)
+.tribalRequest (boolean): Whether the disaster was requested directly by a Tribal Nation (Yes/No)
+.fipsStateCode (integer or string): Two-digit FIPS state code (e.g. 37 for NC)
+.fipsCountyCode (integer or string): Three-digit FIPS county code (e.g. 183 for Mecklenburg County)
+.placeCode (integer): FEMA’s internal place code (usually 99 + county code, e.g. 99183)
+.designatedArea (string): County or area name included in the declaration (e.g. Mecklenburg (County))
+.declarationRequestNumber (integer): Unique ID for the declaration request (e.g. 4393)
+.lastIAFilingDate (date): Date the last Individual Assistance application was filed (nullable, format YYYY-MM-DD).
+.incidentId (integer): Unique incident identifier assigned by FEMA (e.g. 2024081201)
+.region (integer): FEMA regional office number (1–10)
+.designatedIncidentTypes (string): Comma-separated codes for all incident types (e.g. R for Fire)
+.lastRefresh (datetime): Timestamp of last API update (e.g. 2024-08-27T18:22:14Z)
+.hash (string): MD5 hash of the record’s contents
+.id (string): Unique record ID (GUID)
+
+
+🧹 Data Cleaning Log
+Project: Visualizing US Natural Disaster Declarations
+Data Source: Federal Emergency Management Agency OpenFEMA API
+Dataset: DisasterDeclarationsSummaries
+Records: 69,615
+Columns: 28
+
+1️⃣ Data Acquisition
+•	Dataset retrieved using FEMA Open Data CSV endpoint:
+https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries.csv
+•	CSV endpoint used instead of JSON API to avoid pagination limits (1000 records per request).
+2️⃣ Initial Inspection
+•	Checked dataset shape, column names, and data types.
+•	Evaluated missing values using:
+df.isnull().sum()
+
+3️⃣ Date Conversion
+The following columns were converted to datetime format:
+•	declarationDate
+•	incidentBeginDate
+•	incidentEndDate
+•	disasterCloseoutDate
+•	lastIAFilingDate
+•	lastRefresh
+Conversion method:
+pd.to_datetime(column, errors="coerce")
+Invalid date values were safely converted to NaT.
+
+4️⃣ Missing Value Handling
+Column						Missing Count			Action Taken
+incidentEndDate				1,521			Left as NaT (ongoing disasters)
+disasterCloseoutDate			16,577			Left as NaT (not officially closed)
+lastIAFilingDate				50,182			Logical missing (only for IA programs)
+designatedIncidentTypes			47,812			Filled with "Not Specified"
+
+Handling example:
+df["designatedIncidentTypes"] = df["designatedIncidentTypes"].fillna("Not Specified")
+
+5️⃣ Boolean Standardization
+Ensured correct boolean types for:
+•	ihProgramDeclared
+•   iaProgramDeclared
+•   paProgramDeclared
+•   hmProgramDeclared
+•   tribalRequest
+Converted to bool datatype.
+
+6️⃣ Categorical Standardization
+•Trimmed whitespace
+•Standardized casing for:
+state (uppercase)
+incidentType (Title case)
+Example:
+df["incidentType"] = df["incidentType"].str.strip().str.title()
+
+7️⃣ Duplicate Removal
+Removed duplicate records using:
+df.drop_duplicates(subset=["id"], keep="last")
+
+8️⃣ FIPS Code Formatting
+Ensured correct formatting with leading zeros:
+df["fipsStateCode"] = df["fipsStateCode"].astype(str).str.zfill(2)
+df["fipsCountyCode"] = df["fipsCountyCode"].astype(str).str.zfill(3)
+
+9️⃣ Derived Features
+Created additional analytical features:
+•	declarationYear
+•	disasterDuration (in days)
+df["disasterDuration"] = (
+    df["incidentEndDate"] - df["incidentBeginDate"]
+).dt.days
+
+🔟 Final Dataset Status
+• Cleaned dataset saved in: data/processed/disaster_declarations_cleaned.csv
+•	No critical missing values remain.
+•	Dataset ready for exploratory analysis and visualization.

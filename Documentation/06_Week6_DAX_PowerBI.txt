@@ -1,6 +1,6 @@
 1. Executive Summary
 
-Week 5 focused on developing analytical intelligence within Power BI using DAX (Data Analysis Expressions). This phase emphasized understanding how calculations are created, controlled, and optimized in Power BI to build dynamic and business-driven dashboards. The week covered the conceptual foundations of DAX, differences between implicit and explicit measures, the importance of measures over simple drag-and-drop aggregations, and the use of key DAX functions such as CALCULATE and IF. By the end of this week, the project transitioned from static visual reporting to logic-driven, interactive analytics capable of responding dynamically to user filters and slicers.
+Week 6 focused on developing analytical intelligence within Power BI using DAX (Data Analysis Expressions). This phase emphasized understanding how calculations are created, controlled, and optimized in Power BI to build dynamic and business-driven dashboards. The week covered the conceptual foundations of DAX, differences between implicit and explicit measures, the importance of measures over simple drag-and-drop aggregations, and the use of key DAX functions such as CALCULATE and IF. By the end of this week, the project transitioned from static visual reporting to logic-driven, interactive analytics capable of responding dynamically to user filters and slicers.
 
 2. Learning Objectives
 
